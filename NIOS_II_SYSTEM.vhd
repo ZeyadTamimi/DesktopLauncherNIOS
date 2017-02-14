@@ -10,8 +10,7 @@ USE ieee.std_logic_unsigned.ALL;
 
 ENTITY NIOS_II_SYSTEM IS
 	PORT (
-		PWM_CW1			: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		PWM_CW2			: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+
 		-- clock and Reset Button
 		CLOCK_50 		: IN STD_LOGIC;
 		KEY 				: IN STD_LOGIC_VECTOR (0 DOWNTO 0);
@@ -55,7 +54,28 @@ ENTITY NIOS_II_SYSTEM IS
 		-- Hex Display
 		Hex0_1			: out   std_logic_vector(7 downto 0) ;
 		Hex2_3			: out   std_logic_vector(7 downto 0) ;
-		Hex4_5			: out   std_logic_vector(7 downto 0) 
+		Hex4_5			: out   std_logic_vector(7 downto 0) ;
+		
+		PWM_CW1			: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+		PWM_CW2			: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+		
+		--NEW AUDIO
+		AUD_ADCDAT : in std_logic ;
+		AUD_ADCLRCK : in std_logic ;
+		AUD_BCLK : in std_logic ;
+		AUD_DACDAT : out std_logic ;
+		AUD_DACLRCK : in std_logic ;
+		I2C_SDAT : inout std_logic ;
+		I2C_SCLK : out std_logic ;
+		AUD_XCK : out std_logic ;
+		
+		--NEW FLASH
+		FL_ADDR    : out std_logic_vector(21 downto 0);          
+		FL_CE_N    : out std_logic;                
+		FL_OE_N    : out std_logic;                
+		FL_WE_N    : out std_logic;                
+		FL_RST_N   : out std_logic;                          
+		FL_DQ      : inout std_logic_vector(7 downto 0)                
 	);
 END NIOS_II_SYSTEM;
 
@@ -107,7 +127,25 @@ ARCHITECTURE NIOS_II_SYSTEM_rtl OF NIOS_II_SYSTEM IS
 		-- Hex display signals
 		hex0_1_export          : out   std_logic_vector(7 downto 0);                     -- export
 		hex2_3_export          : out   std_logic_vector(7 downto 0);                     -- export
-		hex4_5_export          : out   std_logic_vector(7 downto 0)                    	-- export
+		hex4_5_export          : out   std_logic_vector(7 downto 0);                    	-- export
+		
+		--NEW AUDIO
+		audio_ADCDAT : in std_logic := 'X'; -- ADCDAT
+		audio_ADCLRCK : in std_logic := 'X'; -- ADCLRCK
+		audio_BCLK : in std_logic := 'X'; -- BCLK
+		audio_DACDAT : out std_logic; -- DACDAT
+		audio_DACLRCK : in std_logic := 'X'; -- DACLRCK
+		audio_and_video_SDAT : inout std_logic := 'X'; -- SDAT
+		audio_and_video_SCLK : out std_logic; -- SCLK
+		wolfson_chip_clk : out std_logic ;-- clk
+		
+		--NEW FLASH
+		flash_conduit_end_ADDR   : out std_logic_vector(21 downto 0);
+		flash_conduit_end_CE_N   : out std_logic;
+		flash_conduit_end_OE_N   : out std_logic;
+		flash_conduit_end_WE_N   : out std_logic;
+		flash_conduit_end_RST_N  : out std_logic;
+		flash_conduit_end_DQ     : inout std_logic_vector(7 downto 0)
 	);
 	END COMPONENT;
 	
@@ -160,6 +198,24 @@ BEGIN
 		
 		hex0_1_export 			=> Hex0_1,
 		hex2_3_export 			=> Hex2_3,
-		hex4_5_export 			=> Hex4_5
+		hex4_5_export 			=> Hex4_5,
+		
+		--NEW AUDIO
+		audio_ADCDAT => AUD_ADCDAT,
+		audio_ADCLRCK => AUD_ADCLRCK,
+		audio_BCLK => AUD_BCLK,
+		audio_DACDAT => AUD_DACDAT,
+		audio_DACLRCK => AUD_DACLRCK,
+		audio_and_video_SDAT => I2C_SDAT,
+		audio_and_video_SCLK => I2C_SCLK,
+		wolfson_chip_clk => AUD_XCK,
+		
+		--NEW FLASH
+		flash_conduit_end_ADDR => FL_ADDR,
+		flash_conduit_end_CE_N => FL_CE_N,
+		flash_conduit_end_OE_N => FL_OE_N,
+		flash_conduit_end_WE_N => FL_WE_N,
+		flash_conduit_end_RST_N => FL_RST_N,
+		flash_conduit_end_DQ => FL_DQ
 	);
 END NIOS_II_SYSTEM_rtl;
