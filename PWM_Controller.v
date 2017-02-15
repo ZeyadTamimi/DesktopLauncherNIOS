@@ -6,12 +6,10 @@ module PWM_Controller (
 	);
 	
 	input clk;            //Port type declared
-	input [7:0] PWM_CW;   // 8 bit PWM input
+	input [15:0] PWM_CW;
 	
 	output reg PWM_out; // 1 bit PWM output
-	wire [7:0] counter_out;  // 8 bit counter output
-
-	
+	wire [15:0] counter_out;
 
 	always @ (posedge clk)
 	begin
@@ -40,11 +38,12 @@ module counter (
 );
 
 	input clk;			// clock declared as an input port
-	output reg [7:0] counter_out;  // counter_out declared as an 8 bit output register
+	output reg [15:0] counter_out;  // counter_out declared as an 8 bit output register
 	
 	always @(posedge clk)
 		begin
-			counter_out <= #1 counter_out + 1'b1;
+			if (counter_out == 16'd62500) counter_out = 16'b0;
+			else counter_out <= counter_out + 16'b1;
 		end
 		
 endmodule				// identifies the end of the module

@@ -56,8 +56,9 @@ ENTITY NIOS_II_SYSTEM IS
 		Hex2_3			: out   std_logic_vector(7 downto 0) ;
 		Hex4_5			: out   std_logic_vector(7 downto 0) ;
 		
-		PWM_CW1			: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		PWM_CW2			: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+		PWM_CW1			: OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+		PWM_CW2			: OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+		PWM_CWFIRE		: OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
 		
 		--NEW AUDIO
 		AUD_ADCDAT : in std_logic ;
@@ -87,8 +88,9 @@ ARCHITECTURE NIOS_II_SYSTEM_rtl OF NIOS_II_SYSTEM IS
 		reset_reset_n 				: IN STD_LOGIC;
 		switches_export 			: IN STD_LOGIC_VECTOR (9 DOWNTO 0);
 		leds_export 				: OUT STD_LOGIC_VECTOR (9 DOWNTO 0);
-		pwm_cw1_export				: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);                       -- pwm_cw
-		pwm_cw2_export				: OUT STD_LOGIC_VECTOR (7 DOWNTO 0);                       -- pwm_cw
+		pwm_cw1_export				: OUT STD_LOGIC_VECTOR (15 DOWNTO 0);                       -- pwm_cw
+		pwm_cw2_export				: OUT STD_LOGIC_VECTOR (15 DOWNTO 0);                       -- pwm_cw
+		pwm_cwfire_export       : OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
 		
 		sdram_addr        		: out   std_logic_vector(12 downto 0);                    -- addr
 		sdram_ba          		: out   std_logic_vector(1 downto 0);                     -- ba
@@ -164,8 +166,9 @@ BEGIN
 		reset_reset_n 			=> KEY(0),
 		switches_export 		=> SW(9 DOWNTO 0),
 		leds_export 			=> LEDR(9 DOWNTO 0),
-		pwm_cw1_export       => PWM_CW1(7 DOWNTO 0),
-		pwm_cw2_export       => PWM_CW2(7 DOWNTO 0),
+		pwm_cw1_export       => PWM_CW1(15 DOWNTO 0),
+		pwm_cw2_export       => PWM_CW2(15 DOWNTO 0),
+		pwm_cwfire_export    => PWM_CWFIRE(15 DOWNTO 0),
 		
 		sdram_addr 				=> DRAM_ADDR,
 		sdram_ba 				=> BA,
