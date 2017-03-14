@@ -1548,7 +1548,7 @@ agreement for further details.
 		(pt 144 32)
 		(output)
 		(text "outclk" (rect 0 0 29 12)(font "Arial" ))
-		(text "outclk" (rect 99 27 123 39)(font "Arial" ))
+		(text "outclk" (rect 99 27 128 39)(font "Arial" ))
 		(line (pt 144 32)(pt 128 32))
 	)
 	(drawing
@@ -1577,7 +1577,7 @@ agreement for further details.
 		(pt 216 32)
 		(output)
 		(text "PWM_out" (rect 0 0 47 12)(font "Arial" ))
-		(text "PWM_out" (rect 156 27 195 39)(font "Arial" ))
+		(text "PWM_out" (rect 156 27 203 39)(font "Arial" ))
 		(line (pt 216 32)(pt 200 32))
 	)
 	(drawing
@@ -1606,7 +1606,7 @@ agreement for further details.
 		(pt 216 32)
 		(output)
 		(text "PWM_out" (rect 0 0 47 12)(font "Arial" ))
-		(text "PWM_out" (rect 156 27 195 39)(font "Arial" ))
+		(text "PWM_out" (rect 156 27 203 39)(font "Arial" ))
 		(line (pt 216 32)(pt 200 32))
 	)
 	(drawing
@@ -1635,7 +1635,7 @@ agreement for further details.
 		(pt 216 32)
 		(output)
 		(text "PWM_out" (rect 0 0 47 12)(font "Arial" ))
-		(text "PWM_out" (rect 156 27 195 39)(font "Arial" ))
+		(text "PWM_out" (rect 156 27 203 39)(font "Arial" ))
 		(line (pt 216 32)(pt 200 32))
 	)
 	(drawing
@@ -2431,6 +2431,16 @@ agreement for further details.
 	(pt 800 800)
 	(pt 800 880)
 )
+(connector
+	(text "GPIO_0[34]" (rect 1170 1016 1227 1028)(font "Arial" ))
+	(pt 1080 1032)
+	(pt 1344 1032)
+)
+(connector
+	(text "GPIO_0[32]" (rect 602 1096 659 1108)(font "Arial" ))
+	(pt 776 1112)
+	(pt 592 1112)
+)
 (junction (pt 664 296))
 (junction (pt 696 312))
 (junction (pt 208 88))
@@ -2661,5 +2671,10 @@ agreement for further details.
 (text "Wifi_RXD" (rect 2568 360 2621 374)(font "Arial" (font_size 8)))
 (text "Wifi_TXD" (rect 2568 376 2619 390)(font "Arial" (font_size 8)))
 (text "Wifi_RXD" (rect 2568 360 2621 374)(font "Arial" (font_size 8)))
+(text "Bluetooth_RXD" (rect 496 1104 580 1118)(font "Arial" (font_size 8)))
+(text "Bluetooth_TXD" (rect 1288 1024 1371 1038)(font "Arial" (font_size 8)))
+(text "Bluetooth_RXD" (rect 496 1104 580 1118)(font "Arial" (font_size 8)))
+(text "Bluetooth_RXD" (rect 2016 360 2100 374)(font "Arial" (font_size 8)))
+(text "Bluetooth_TXD" (rect 2016 376 2099 390)(font "Arial" (font_size 8)))
 (rectangle (rect 2104 32 2312 400))
 (rectangle (rect 2624 32 2832 400))
